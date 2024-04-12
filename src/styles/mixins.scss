@@ -1,0 +1,274 @@
+@import "./variables.scss";
+
+@mixin media($width: $media) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin pcS {
+  @include media($pcS) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include media($tablet) {
+    @content;
+  }
+}
+
+@mixin wrapper {
+  max-width: 1440px;
+  margin: auto;
+}
+
+@mixin border_box() {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@function rem($pixels, $context: $size-context) {
+  @return #{$pixels/$context}rem;
+}
+
+@mixin btn-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  @include pcS {
+    display: none;
+  }
+  .btn_bar {
+    width: 30px;
+    height: 2px;
+    margin: 6px;
+    background: $white;
+    border-radius: 10px;
+    @include trans;
+  }
+
+  &::after {
+    content: "";
+    background: $white;
+    width: 30px;
+    height: 2px;
+    margin: 2px;
+    @include trans;
+  }
+  &.is-open {
+    z-index: 3;
+    .btn_bar {
+      transform: rotate(45deg);
+      &::before {
+        content: "";
+        background: $white;
+        width: 30px;
+        height: 2px;
+        border-radius: 10px;
+        @include block_full;
+        transform: rotate(-90deg);
+      }
+    }
+
+    &::after,
+    &:before {
+      display: none;
+    }
+  }
+}
+
+@mixin trans($val: 0.2s) {
+  -moz-transition: $val all ease-in-out;
+  -webkit-transition: $val all ease-in-out;
+  -o-transition: $val all ease-in-out;
+  -ms-transition: $val all ease-in-out;
+  transition: $val all ease-in-out;
+}
+
+@mixin block_full() {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 0;
+}
+@mixin h1 {
+  font-size: 32px;
+  font-weight: 700;
+  @include pcS {
+    font-size: rem(56);
+  }
+}
+
+@mixin h2 {
+  font-size: 24px;
+  font-weight: 700;
+
+  @include pcS {
+    font-size: rem(48);
+  }
+}
+
+@mixin h3 {
+  font-size: 22px;
+  font-weight: 700;
+
+  @include pcS {
+    font-size: rem(36);
+  }
+}
+
+@mixin h4 {
+  font-size: 20px;
+  font-weight: 700;
+
+  @include pcS {
+    font-size: rem(34);
+  }
+}
+
+@mixin h5 {
+  font-size: 18px;
+  font-weight: 700;
+
+  @include pcS {
+    font-size: rem(26);
+  }
+}
+
+@mixin regular {
+  font-size: 14px;
+
+  @include pcS {
+    font-size: 16px;
+  }
+  font-weight: 400;
+}
+@mixin button {
+  background: $white;
+  color: $black;
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  @include pcS {
+    display: unset;
+    border-radius: rem(5);
+    padding: rem(8);
+    border: rem(1) solid transparent;
+  }
+  @include trans;
+  &:hover {
+    border: 1px solid $white;
+    background: transparent;
+    color: $white;
+    @include pcS {
+      border: rem(1) solid $white;
+    }
+  }
+}
+
+@mixin layout {
+  @include pcS {
+    padding-left: 43px;
+    padding-right: 43px;
+  }
+}
+@mixin scroll($thumb: $white, $track: rgba(0, 0, 0, 0.1), $width: 5px) {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: $thumb $track;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+  &::-webkit-scrollbar-track {
+    background: $track;
+    padding: 0 2px;
+    border-radius: 2px;
+    width: 1px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $thumb;
+    border-radius: 2px;
+    width: 5px;
+    height: 5px;
+    cursor: pointer;
+  }
+}
+
+@mixin fadeInUp {
+  animation: fadeInUp 0.6s ease-in forwards;
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(15%);
+      transform: translateY(15%);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin FadeIn {
+  animation: FadeIn 0.6s ease-in forwards;
+  @keyframes FadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@mixin FadeInLeft {
+  animation: FadeInLeft 0.6s ease-in forwards;
+  @keyframes FadeInLeft {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateX(15%);
+      transform: translateX(15%);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+  }
+}
+@mixin FadeInRight {
+  animation: FadeInRight 0.6s ease-in forwards;
+  @keyframes FadeInRight {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateX(-15%);
+      transform: translateX(-15%);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+  }
+}

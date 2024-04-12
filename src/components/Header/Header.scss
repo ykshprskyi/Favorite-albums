@@ -1,0 +1,78 @@
+@import "../../styles/mixins.scss";
+
+.header {
+  padding: 15px 25px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include pcS {
+    border-bottom: rem(1) solid $white;
+    padding: rem(50) rem(75);
+  }
+
+  &-title {
+    @include h5;
+    @include trans;
+    &:hover {
+      color: $yellow;
+    }
+  }
+
+  &-nav {
+    &.is-open {
+      .header-nav__links {
+        right: 0;
+        bottom: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+    }
+    &__btn {
+      @include btn-header;
+    }
+
+    &__links {
+      @media screen and (max-width: 1200px) {
+        position: fixed;
+        background: $white;
+        left: 0;
+        right: 100%;
+        top: 60px;
+        opacity: 0;
+        visibility: hidden;
+        color: $black;
+        transform: translateX(-15px);
+        display: flex;
+        z-index: 1;
+        flex-direction: column;
+        padding: 50px;
+      }
+      @include trans;
+      @include pcS {
+        flex-direction: row;
+        padding: unset;
+      }
+      &__item {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+          @include pcS {
+            margin-right: rem(25);
+          }
+        }
+        @include pcS {
+          margin-bottom: unset;
+          font-size: rem(25);
+        }
+        font-size: 25px;
+        @include trans;
+        &:hover {
+          transform: scale(1.1);
+          color: $yellow;
+        }
+      }
+    }
+  }
+}

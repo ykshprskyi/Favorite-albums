@@ -1,0 +1,33 @@
+@import "../../styles/mixins.scss";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 25px;
+  @include pcS {
+    padding: rem(30) rem(75);
+    border-top: rem(1) solid $white;
+  }
+  &-title {
+    @include h5;
+    margin-bottom: 10px;
+
+    @include pcS {
+      margin-bottom: rem(15);
+    }
+    @include trans;
+    &:hover {
+      color: $yellow;
+    }
+  }
+
+  &-caption {
+    font-size: 14px;
+
+    @include pcS {
+      font-size: rem(16);
+    }
+  }
+}

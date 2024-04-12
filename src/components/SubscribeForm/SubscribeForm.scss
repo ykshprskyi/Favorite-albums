@@ -1,0 +1,77 @@
+@import "../../styles/mixins.scss";
+
+.subscribe-form {
+  padding: 30px 25px;
+  @include pcS {
+    padding: rem(50) rem(75);
+  }
+  &-message {
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+    @include pcS {
+      font-size: rem(24);
+      margin-bottom: rem(25);
+    }
+    &.success {
+      color: $yellow;
+    }
+    &.error {
+      color: $red;
+    }
+  }
+  &-title {
+    @include h3;
+    text-align: center;
+    margin-bottom: 15px;
+    @include pcS {
+      margin-bottom: rem(30);
+    }
+  }
+  &-form {
+    display: flex;
+    flex-direction: column;
+    &__input-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+      @include pcS {
+        margin-bottom: rem(25);
+        flex-direction: row;
+      }
+      &__label {
+        font-size: 20px;
+        margin-bottom: 15px;
+        @include pcS {
+          font-size: rem(36);
+          margin-bottom: unset;
+          margin-right: rem(15);
+        }
+      }
+      &__input {
+        padding: 5px;
+        border: none;
+        font-family: $mainFont;
+        font-size: 16px;
+        width: 100%;
+        @include pcS {
+          font-size: rem(24);
+          margin-bottom: unset;
+          padding: rem(8);
+          width: rem(250);
+        }
+      }
+    }
+    &__button {
+      @include button;
+      font-size: 16px;
+      @include pcS {
+        width: rem(200);
+        margin: auto;
+        font-size: rem(24);
+      }
+    }
+  }
+}
