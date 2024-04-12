@@ -1,7 +1,7 @@
 import Iowa from "../components/Iowa/Iowa"
 import EvilEmpire from "../components/EvilEmpire/EvilEmpire"
 import SeasOfCheese from "../components/SeasOfCheese/SeasOfCheese"
-import Form from "../components/SubscribeForm/SubscribeForm"
+import SubscribeForm from "../components/SubscribeForm/SubscribeForm"
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Iowa />
       <SeasOfCheese />
       <EvilEmpire />
-      <Form />
+      <SubscribeForm />
     </main>
   );
 }
